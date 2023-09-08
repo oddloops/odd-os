@@ -14,7 +14,7 @@ void Shell::runShell()
 		std::getline(std::cin, user_input);
 		if (user_input == "exit")
 		{
-			endShell();
+			exitShell();
 		}
 		std::cout << user_input << std::endl;
 	}
