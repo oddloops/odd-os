@@ -48,8 +48,23 @@ void Shell::executeCommand(const std::vector<std::string>& command)
 	{
 		return;
 	}
-	pid_t pid = fork();
 
+	const std::string shell_command = command[0];
+
+	// shell commands
+	if (shell_command == "cd")
+	{
+		if (command.size() == 2)
+		{
+			if (chdir(command[1].c_str()) == 0)
+			{
+				std::cout << "Directory changed to: " << command[1] << std::endl;
+			}
+		}
+		else {
+			std::cerr << "Usage: cd <directory>" << std::endl;
+		}
+	}
 }
 
 const char** Shell::convertToCStringArray(const std::vector<std::string>& tokens)
