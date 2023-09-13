@@ -37,7 +37,7 @@ std::vector<std::string> Shell::parseInput(const std::string& user_input)
 	return tokens;
 }
 
-void executeCommand(const std::vector<std::string>& command)
+void Shell::executeCommand(const std::vector<std::string>& command)
 {
 	if (command.size() == 0)
 	{
@@ -49,7 +49,7 @@ void executeCommand(const std::vector<std::string>& command)
 	}
 }
 
-const char** convertToCStringArray(const std::vector<std::string>& tokens)
+const char** Shell::convertToCStringArray(const std::vector<std::string>& tokens)
 {
 	size_t n = tokens.size();
 	const char** args = new const char* [n + 1];
