@@ -8,19 +8,24 @@ void Shell::runShell()
 		std::cout << "oddOS$ ";
 		std::getline(std::cin, user_input);
 		std::vector<std::string> input = parseInput(user_input);
-		for (std::string s : input)
+		if (input.size() == 0)
 		{
-			std::cout << s << std::endl;
+			continue;
 		}
 		if (input[0] == "exit")
 		{
 			exitShell();
+		}
+		else
+		{
+			executeCommand(input);
 		}
 	}
 }
 
 void Shell::exitShell()
 {
+	std::cout << "Exiting shell. Thank you for your time." << std::endl;
 	std::exit(EXIT_SUCCESS);
 }
 
@@ -43,10 +48,8 @@ void Shell::executeCommand(const std::vector<std::string>& command)
 	{
 		return;
 	}
-	if (command[0] == "exit")
-	{
-		return;
-	}
+	pid_t pid = fork();
+
 }
 
 const char** Shell::convertToCStringArray(const std::vector<std::string>& tokens)
